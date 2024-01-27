@@ -44,7 +44,7 @@ void kernIdentifyCellStartEnd_ref(int N, int *particleGridIndices,
     if (i==0 || particleGridIndices[i] != particleGridIndices[i-1] )
     gridCellStartIndices[gridCellIdx] = i;
     
-    if (i==N-1 || particleGridIndices[i-1] != particleGridIndices[i] )
+    if (i==N-1 || particleGridIndices[i+1] != particleGridIndices[i] )
     gridCellEndIndices[gridCellIdx] = i;
   }
 }
@@ -56,7 +56,7 @@ void testCUDA() {
   int gridCellStartIndices[Ncell];
   int gridCellEndIndices[Ncell];
 
-  kernIdentifyCellStartEnd(N, particleGridIndices, gridCellStartIndices, gridCellEndIndices);
+  kernIdentifyCellStartEnd_ref(N, particleGridIndices, gridCellStartIndices, gridCellEndIndices);
 
   // Print results
   std::cout << "Grid Cell Start Indices: ";

@@ -1,0 +1,5 @@
+implementation	average_fps num_boids
+brute_force	0.440373    50000
+uniGrid_scatter 21.8567 50000
+uniGrid_coherent    23.2031 50000
+
